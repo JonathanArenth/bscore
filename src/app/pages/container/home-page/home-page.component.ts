@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, observable } from 'rxjs';
+import { HttpApiService } from '../../../share/services/http-api.service';
+import { Games } from '../../../share/models/games';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  public games: Observable<Games[]>;
+
+  constructor(
+    private getApi: HttpApiService
+  ) { }
 
   ngOnInit(): void {
+    this.games = this.getApi.getScore();
   }
-
 }

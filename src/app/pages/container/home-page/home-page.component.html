@@ -1,1 +1,17 @@
 <p>home-page works!</p>
+<div *ngIf="games | async; let listGames">
+  <h1>Liste des matchs de la saison</h1>
+  <div *ngFor="let game of listGames">
+    <div class="teams">
+      <div>
+        {{game.DateTime | date:'medium'}}
+      </div>
+      <div>
+        {{game.HomeTeam}}
+      </div>
+      <div>
+        {{game.AwayTeam}}
+      </div>
+    </div>
+  </div>
+</div>
