@@ -1,17 +1,134 @@
-<p>home-page works!</p>
-<div *ngIf="games | async; let listGames">
-  <h1>Liste des matchs de la saison</h1>
-  <div *ngFor="let game of listGames">
-    <div class="teams">
-      <div>
-        {{game.DateTime | date:'medium'}}
-      </div>
-      <div>
-        {{game.HomeTeam}}
-      </div>
-      <div>
-        {{game.AwayTeam}}
+<div class="box">
+  <div class="left">
+    <h1>
+      Matchs de la saison {{actualSeason}}
+    </h1>
+    <div *ngFor="let game of listGames">
+      <div *ngIf="game.DateTime">
+        <div *ngIf="game.AwayTeamScore !== null">
+          <div class="games">
+            <div class="date">
+              {{game.DateTime | date:'medium'}}
+            </div>
+            <div class="vs">
+              <div *ngFor="let team of listTeams">
+                <div *ngIf="game.HomeTeam === team.Key" class="team">
+                  <img src="{{team.WikipediaLogoUrl}}" alt="logoHomeTeam" class="logo">
+                  <div>
+                    {{team.City}} {{team.Name}}
+                  </div>
+                </div>
+              </div>
+              <div class="score">
+                {{game.HomeTeamScore}} - {{game.AwayTeamScore}}
+              </div>
+              <div *ngFor="let team of listTeams">
+                <div *ngIf="game.AwayTeam === team.Key" class="team">
+                  <img src="{{team.WikipediaLogoUrl}}" alt="logoAwayTeam" class="logo">
+                  <div>
+                    {{team.City}} {{team.Name}}
+                  </div>
+                </div>
+              </div>
+            </div> <!--end .vs-->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> <!--end left-->
+  <div class="right">
+    <div class="nextGame">
+      <h1>Prochain match</h1>
+      <div *ngFor="let nextGame of listNextGames" class="games">
+        <div>
+          {{nextGame.DateTime | date:'medium'}}
+        </div>
+        <div class="vs">
+          <div *ngFor="let team of listTeams">
+            <div *ngIf="nextGame.HomeTeam === team.Key" class="team">
+              <img src="{{team.WikipediaLogoUrl}}" alt="logoHomeTeam" class="logo">
+              <div>
+                {{team.City}} {{team.Name}}
+              </div>
+            </div>
+          </div>
+          <div class="score">
+            VS
+          </div>
+          <div *ngFor="let team of listTeams">
+            <div *ngIf="nextGame.AwayTeam === team.Key" class="team">
+              <img src="{{team.WikipediaLogoUrl}}" alt="logoAwayTeam" class="logo">
+              <div>
+                {{team.City}} {{team.Name}}
+              </div>
+            </div>
+          </div>
+        </div> <!--fin .vs-->
+      </div> <!--end .games-->
+    </div> <!--en nextGame-->
+    <div class="rank">
+      <h1>Classement Top NBA</h1>
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Conférence Est" class="position">
+          <table>
+            <thead>
+              <tr>
+                <th *ngFor="let table of titleTable">{{table.title}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let rank of listRanksE" class="games">
+                <tr>
+                  <td *ngFor="let team of listTeams">
+                    <div *ngIf="rank.Key === team.Key" class="team boxteam">
+                      <img src="{{team.WikipediaLogoUrl}}" alt="logoTeam" class="logo">
+                      <div>
+                        {{rank.City}} {{rank.Name}}
+                      </div>
+                    </div>
+                  </td>
+                  <td>{{rank.Wins}}</td>
+                  <td>{{rank.Losses}}</td>
+                  <td>{{rank.HomeWins}}</td>
+                  <td>{{rank.HomeLosses}}</td>
+                  <td>{{rank.AwayWins}}</td>
+                  <td>{{rank.AwayLosses}}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Conférence Ouest" class="position">
+          <table>
+            <thead>
+              <tr>
+                <th *ngFor="let table of titleTable">{{table.title}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let rank of listRanksW" class="games">
+                <tr>
+                  <td *ngFor="let team of listTeams">
+                    <div *ngIf="rank.Key === team.Key" class="team boxteam">
+                      <img src="{{team.WikipediaLogoUrl}}" alt="logoTeam" class="logo">
+                      <div>
+                        {{rank.City}} {{rank.Name}}
+                      </div>
+                    </div>
+                  </td>
+                  <td>{{rank.Wins}}</td>
+                  <td>{{rank.Losses}}</td>
+                  <td>{{rank.HomeWins}}</td>
+                  <td>{{rank.HomeLosses}}</td>
+                  <td>{{rank.AwayWins}}</td>
+                  <td>{{rank.AwayLosses}}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div></div>
+  </div><!--end right-->
+</div><!--end .box-->

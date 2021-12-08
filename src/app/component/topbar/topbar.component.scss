@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+
+.container-fluid{
+  background-color: rgb(221, 127, 49);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  h1{
+    font-size: 40px;
+    color: #FFFF;
+    font-family: 'Comforter', cursive;
+    font-weight: 600;
+  }
+  .icons {
+    width: fit-content;
+    span{
+      color: #FFFF;
+      margin-left: 10px;
+    }
+    .power{
+      color: rgba(219, 39, 39, 0.753);
+      font-weight: 600;
+      margin-right: 20px;
+    }
+    span:hover {
+      color: rgba(182, 42, 42, 0.534);
+      cursor: pointer;
+    }
+  }
+}

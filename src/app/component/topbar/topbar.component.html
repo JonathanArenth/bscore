@@ -1,1 +1,22 @@
-<p>topbar works!</p>
+<div class="container-fluid">
+  <h1>Bscore</h1>
+  <div class="icons">
+    <span class="material-icons" routerLink="/teams" routerLinkActive="active" [queryParams]="{name: 'teams'}">
+    sports_basketball
+    </span>
+    <span class="material-icons" routerLink="/news" routerLinkActive="active" [queryParams]="{name: 'news'}">
+    article
+    </span>
+    <span class="material-icons" routerLink="/home-page" routerLinkActive="active" [queryParams]="{name: 'home-page'}">
+    home
+    </span>
+    <!--
+      <span class="material-icons" routerLink="/profil" routerLinkActive="active" [queryParams]="{name: 'profil'}">
+      person
+      </span>
+      <span class="material-icons power">
+      power_settings_new
+      </span>
+    -->
+  </div>
+</div>

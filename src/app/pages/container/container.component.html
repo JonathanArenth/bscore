@@ -1,1 +1,30 @@
-<p>container works!</p>
+<div *ngIf="games">
+  <div *ngIf="routeName === 'home-page'">
+    <app-home-page
+    [listGames]="itemGames"
+    [listTeams]="teams"
+    [currentSeason]="season"
+    [listNextGames]="itemNextGames"
+    [listNews]="news"
+    [listRanksE]="teamsRankE"
+    [listRanksW]="teamsRankW">
+    </app-home-page>
+  </div>
+</div>
+<div *ngIf="news$ | async as news">
+  <div *ngIf="routeName === 'news'">
+    <app-news [listNews]="news" [listTeams]="teams"></app-news>
+  </div>
+
+</div>
+<div *ngIf="routeName === 'profil'">
+  <app-profile></app-profile>
+</div>
+<div>
+  <div *ngIf="routeName === 'teams'">
+    <app-teams [listTeams]="teamsWithStats" [currentSeason]="season" [players]="newPlayersStats"></app-teams>
+  </div>
+</div>
+<div class="footer">
+  <app-footer></app-footer>
+</div>

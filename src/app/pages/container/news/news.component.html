@@ -1,0 +1,14 @@
+<div class="news" *ngFor="let news of listNews">
+  <div *ngFor="let team of listTeams">
+    <div *ngIf="news.Team === team.Key">
+      <div class="titleBox">
+        <img src="{{team.WikipediaLogoUrl}}" alt="logoTeam" class="logo">
+        <div>{{news.Title}}</div>
+        <div class="published">Published at: {{news.TimeAgo}}</div>
+      </div>
+    </div>
+  </div>
+  <div>{{news.Content}}</div>
+  <div>{{news.Source}}: <a href="{{news.Url}}">{{news.Url}}</a></div>
+  <br>
+</div>

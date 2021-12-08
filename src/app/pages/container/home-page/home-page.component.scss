@@ -1,6 +1,89 @@
-.teams{
+
+h1{
+  text-align: center;
+  padding-top: 15px;
+  font-size: 30px;
+}
+.games{
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 15px;
+  font-size: 15px;
+  div{
+    margin-left: 15px;
+  }
+  div:empty {
+    display: none;
+  }
+  .date {
+    width: 25%;
+  }
 }
-.teams div{
-  margin-left: 5px;
+.logo{
+  width: 30%;
+  height: 30%;
 }
+.team {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  div {
+    margin-left: 15px;
+  }
+}
+.vs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  .score {
+    text-align: center;
+    margin-left: -2em;
+  }
+}
+.box {
+  display: flex;
+  flex-direction: row;
+}
+.left{
+  border-right: #444 2px solid;
+  padding-bottom: 15px;
+}
+.nextGame{
+  border-bottom: #444 2px solid;
+  padding-bottom: 15px;
+}
+
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
+  color:#444;
+}
+
+.boxteam{
+  width: 75%;
+  padding-left: 30px;
+  div{
+    text-align: left;
+  }
+}
+th{
+  padding-left: 10px;
+  text-align: center;
+}
+td{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px #444 solid;
+}
+td:empty{
+  display: none;
+}
+table{
+  margin: 5px;
+}
+

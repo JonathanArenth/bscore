@@ -1,0 +1,51 @@
+<h1>Equipes saison {{actualSeason}}</h1>
+<mat-grid-list [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
+  <div *ngFor="let team of listTeams">
+    <div *ngIf="team[3] !== undefind">
+      <mat-grid-tile class="content" (click)="checkTeam(team[0], team[1], team[2], team[3])">
+        <button mat-button (click)="OpenDialog()">
+          <div class="boxTeams">
+            <img src="{{team[3]}}" alt="team logo" class="logo" id="{{team[0]}}">
+          </div>
+        </button>
+      </mat-grid-tile>
+    </div>
+  </div>
+</mat-grid-list>
+      <!--
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th *ngFor="let table of titleTable">{{table.title}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let player of players" class="players">
+                <tr *ngIf="team[0] === player.Team">
+                  <td>
+                    <img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/{{player.NbaDotComPlayerID}}.png" alt="photo" class="photo">
+                  </td>
+                  <td>{{player.FirstName}} {{player.LastName}}</td>
+                  <td>{{player.Position}}</td>
+                  <td>{{player.BirthDate | date:'longDate'}}</td>
+                  <td>{{player.Weight}}</td>
+                  <td>{{player.Height}}</td>
+                  <td>{{player.BirthCity}} <span *ngIf="player.BirthCountry !== 'USA'">{{player.BirthCountry}}</span></td>
+                  <td>{{player.College}}</td>
+                  <td>{{player.Salary}}</td>
+                  <td>{{player.Experience}}</td>
+                  <td>{{player.Minutes}},{{player.Seconds}}</td>
+                  <td>{{player.Points}}</td>
+                  <td>{{player.TwoPointersPercentage}}</td>
+                  <td>{{player.ThreePointersPercentage}}</td>
+                  <td>{{player.OffensiveRebounds}}</td>
+                  <td>{{player.DefensiveRebounds}}</td>
+                  <td>{{player.BlockedShots}}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <br>
+      -->

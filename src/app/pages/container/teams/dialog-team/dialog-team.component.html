@@ -1,0 +1,39 @@
+
+<h1 mat-dialog-title>
+  <img src="{{data.teamSelectedLogo}}" alt="logo" class="logo">
+  <span class="titleTeam">{{data.teamSelectedCity}} <span>{{data.teamSelectedName}}</span></span>
+</h1>
+<div mat-dialog-content>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let table of titleTable">{{table.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let player of data.players" class="players">
+        <tr *ngIf="data.teamSelected === player.Team">
+          <td>
+            <img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/{{player.NbaDotComPlayerID}}.png" alt="photo" class="photo">
+          </td>
+          <td>{{player.FirstName}} {{player.LastName}}</td>
+          <td>{{player.Position}}</td>
+          <td>{{player.BirthDate | date:'longDate'}}</td>
+          <td>{{player.Weight}}</td>
+          <td>{{player.Height}}</td>
+          <td>{{player.BirthCity}} <span *ngIf="player.BirthCountry !== 'USA'">{{player.BirthCountry}}</span></td>
+          <td>{{player.College}}</td>
+          <td>{{player.Salary}}</td>
+          <td>{{player.Experience}}</td>
+          <td>{{player.Minutes}},{{player.Seconds}}</td>
+          <td>{{player.Points}}</td>
+          <td>{{player.TwoPointersPercentage}}</td>
+          <td>{{player.ThreePointersPercentage}}</td>
+          <td>{{player.OffensiveRebounds}}</td>
+          <td>{{player.DefensiveRebounds}}</td>
+          <td>{{player.BlockedShots}}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
