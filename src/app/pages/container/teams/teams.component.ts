@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { StatsPlayerTeams } from '../../../share/models/statsPlayersTeams';
 import { Teams } from '../../../share/models/teams';
@@ -57,7 +57,7 @@ export class TeamsComponent implements OnInit {
 
  OpenDialog(): void{
    if(this.teamSelected !== undefined){
-     this.dialog.open(DialogTeamComponent, {
+     const dialogRef = this.dialog.open(DialogTeamComponent, {
        data: {
          teamSelected: this.teamSelected,
          teamSelectedCity: this.teamSelectedCity,
@@ -66,6 +66,9 @@ export class TeamsComponent implements OnInit {
          players: this.players
         },
       });
+      dialogRef.afterClosed().subscribe(result => {
+        this.teamSelected = result;
+      })
    }
  }
 }

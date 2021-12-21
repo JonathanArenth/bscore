@@ -31,8 +31,7 @@ export class DialogTeamComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    console.log('data ', data.teamSelected);
-
+    
   }
 
   ngOnInit(): void {
